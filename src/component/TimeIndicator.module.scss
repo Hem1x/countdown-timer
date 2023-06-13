@@ -1,0 +1,16 @@
+.indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__time {
+        font-size: 200px;
+        height: 240px;
+    }
+
+    &__type {
+        font-size: 50px;
+        font-weight: 250;
+    }
+}
+

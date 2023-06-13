@@ -10,6 +10,13 @@
         text-shadow: 0px 4px 10px #FF0000;
     }
 
+    .timer__watch {
+        display: flex;
+        align-items: center;
+
+        margin-bottom: 100px;
+    }
+
     .timer__form {
         max-width: 786px;
         
@@ -25,4 +32,13 @@
 .timer__prescription {
     font-size: 20px;
     color: rgba($color: #fff, $alpha: 0.5);
+}
+
+.separator:not(:last-child) {
+    height: 237px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    margin-right: 100px;
+    margin-left: 75px;
 }
