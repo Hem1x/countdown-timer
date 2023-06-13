@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import TimeIndicator from './component/TimeIndicator'
 import { getTime } from './utils/getTime'
+import Form from './component/Form'
 
 // Target date - (01.09.2023 00:00:00)
 const TARGET_DATE = new Date(2023, 8, 1, 0, 0, 0)
 
 const App = () => {
-    const [isActive, setIsActive] = useState(false)
+    const [isSubscribe, setIsSubscribe] = useState(false)
+
+    const subscribe = (e) => {
+        e.preventDefault()
+        setIsSubscribe(true)
+    }
 
     const NOW = new Date()
     const left = (TARGET_DATE.getTime() - NOW.getTime())/1000
@@ -24,7 +30,6 @@ const App = () => {
         }
     }, [watchData])
 
-
     return (
         <div className="app">
             <div className="container">
@@ -38,15 +43,8 @@ const App = () => {
                             </React.Fragment>
                         ))}
                     </div>
-                    <form className={`timer__form form ${isActive ? 'form--active' : ''}`}
-                        onFocus={() => setIsActive(true)} 
-                        onBlur={() => setIsActive(false)}
-                    >
-                        <label className='form__label'>
-                            <input className='form__input' type="text" placeholder='Your mail address'/>
-                            <button className='form_button button'>SUBMIT</button>
-                        </label>
-                    </form>
+                    {!isSubscribe ? <Form subscribe={subscribe}/> : <div className='subscribed'>Subscribed</div>}
+
                     <p className='timer__prescription'>*To get latest update about our product, please sign up to our newsletter</p>
                 </div>
             </div>
