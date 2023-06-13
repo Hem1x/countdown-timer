@@ -1,5 +1,4 @@
 .form {
-    width: 786px;
     background-color: rgba($color: #fff, $alpha: 0.1);
     border: 1px solid #ffffff50;
     border-radius: 20px;
@@ -14,7 +13,7 @@
 
 .form__label {
     position: relative;
-    width: 100%;
+    width: 80vw;
 
     display: flex;
     align-items: center;
