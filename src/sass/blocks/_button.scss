@@ -1,0 +1,25 @@
+.button {
+    display: inline-block;
+    height: 81px;
+    padding: 18px 30px;
+    border-radius: 0 20px 20px 0;
+    background-color: none;
+
+    border: 1px solid #ffffff50;
+
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+
+    transition: .2s;
+
+    &:hover {
+        scale: (0.98);
+
+        color: #e7b6f8;
+        text-shadow: 0px 4px 10px #FF0000;
+
+        border: 1px solid #bb01ff;
+        box-shadow: 0px 4px 10px #FF0000;
+    }
+}
