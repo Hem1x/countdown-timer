@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 300px;
 
     &__time {
         font-size: 12vw;
-        height: 13vw;
+        height: 14vw;
     }
 
     &__type {

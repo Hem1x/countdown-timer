@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TimeIndicator from './component/TimeIndicator'
+import { getTime } from './utils/getTime'
+
+// Target date - (01.09.2023 00:00:00)
+const TARGET_DATE = new Date(2023, 8, 1, 0, 0, 0)
 
 const App = () => {
     const [isActive, setIsActive] = useState(false)
 
-    const [watchData, setWatchData] = useState([
-        {id: 1, type: 'DAYS', count: '23'},
-        {id: 2, type: 'HOURS', count: '01'},
-        {id: 3, type: 'MINUTES', count: '35'},
-        {id: 4, type: 'SECONDS', count: '20'},
-    ])
+    const NOW = new Date()
+    const left = (TARGET_DATE.getTime() - NOW.getTime())/1000
+
+    const [watchData, setWatchData] = useState(getTime(left))
+
+    useEffect(() => {
+        const timerIterval = setInterval(() => {
+            const remainingTime = getTime(left)
+            setWatchData(remainingTime)
+        }, 1000)
+
+        return () => {
+            clearInterval(timerIterval)
+        }
+    }, [watchData])
+
 
     return (
         <div className="app">
@@ -17,11 +31,11 @@ const App = () => {
                 <div className="timer__block">
                     <div className="timer__text">FUTURE IS COMING</div>
                     <div className="timer__watch">
-                        {watchData.map(data => (
-                            <>
-                                <TimeIndicator name={data.type} count={data.count}/>
+                        {Object.entries(watchData).map(([key, value]) => (
+                            <React.Fragment key={key} >
+                                <TimeIndicator name={key.toUpperCase()} count={value}/>
                                 <div className='separator'></div>
-                            </>
+                            </React.Fragment>
                         ))}
                     </div>
                     <form className={`timer__form form ${isActive ? 'form--active' : ''}`}
