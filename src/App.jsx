@@ -4,7 +4,7 @@ import { getTime } from './utils/getTime'
 import Form from './component/Form'
 
 // Target date - (01.09.2023 00:00:00)
-const TARGET_DATE = new Date(2023, 8, 1, 0, 0, 0)
+const TARGET_DATE = new Date(2023, 11, 12, 0, 0, 0);
 
 const App = () => {
     const [isSubscribe, setIsSubscribe] = useState(false)
